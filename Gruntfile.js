@@ -8,7 +8,8 @@ module.exports = function(grunt) {
         uglify: {
             options:{
                 compress: true,
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+                banner: '/* <%= pkg.name %> <%= pkg.version %> */\n',
+                jshintrc: '.jshintrc'
             },
             build: {
                 src: '<%= pkg.name %>.js',

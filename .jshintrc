@@ -1,0 +1,15 @@
+{
+    "node": true,
+    "browser": true,
+
+    "curly": true,
+    "eqnull": true,
+    "noarg": true,
+    "eqeqeq": true,
+    "noempty": true,
+    "undef": true,
+    "evil": true,
+    "strict": true,
+    "white": true,
+    "unused": true
+}
