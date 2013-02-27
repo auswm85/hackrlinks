@@ -1,0 +1,18 @@
+{
+  "name": "hackrlinks",
+  "description": "Easily tab through hacker news front page.",
+  "version": "1.0.0",
+  "homepage": "https://github.com/auswm85/hackrlinks",
+  "author": {
+    "name": "Austin McShan",
+    "url": "http://austinmcshan.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/auswm85/hackrlinks.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-jshint": "~0.1.1"
+  }
+}

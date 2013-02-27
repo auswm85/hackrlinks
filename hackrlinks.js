@@ -42,46 +42,53 @@
             this.init();
         };
 
-    style.type = 'text/css';
-    
-    if (style.styleSheet) {
-        style.styleSheet.cssText = css;
-    }else {
-        style.appendChild(doc.createTextNode(css));
-    }
-    
-    head.appendChild(style);
-    
-    for (var i = 0, len = links.length; i < len; i++) {
-        var linkEl = links[i],
-            idx = i + 1,
-            title = linkEl.textContent || linkEl.innerText,
-            href = linkEl.href,
-            hackrLink = new HackrLink(linkEl, idx, title, href);
-            
-            hackrLinks.push(hackrLink);
-    }
-    
-    // listen for tab key
-    window.addEventListener('keydown', function(e) {
-        if (e.keyCode === keyMap.TAB) {
-            for (var i = 0, len = hackrLinks.length; i < len; i++) {
-                var lnk = hackrLinks[i];
+    var addStyles = function(){
+        style.type = 'text/css';
+        
+        if (style.styleSheet) {
+            style.styleSheet.cssText = css;
+        }else {
+            style.appendChild(doc.createTextNode(css));
+        }
+        
+        head.appendChild(style);
+    };
 
-                for (var attr in lnk) {
-                    if (attr === 'idx' && lnk[attr] === selectedLink) {
-                       lnk.focus();
+    var init = function() {
+        addStyles();
+        
+        for (var i = 0, len = links.length; i < len; i++) {
+            var linkEl = links[i],
+                idx = i + 1,
+                title = linkEl.textContent || linkEl.innerText,
+                href = linkEl.href,
+                hackrLink = new HackrLink(linkEl, idx, title, href);
+                
+                hackrLinks.push(hackrLink);
+        }
+        
+        // listen for tab key
+        window.addEventListener('keydown', function(e) {
+            if (e.keyCode === keyMap.TAB) {
+                for (var i = 0, len = hackrLinks.length; i < len; i++) {
+                    var lnk = hackrLinks[i];
+
+                    for (var attr in lnk) {
+                        if (attr === 'idx' && lnk[attr] === selectedLink) {
+                           lnk.focus();
+                        }
                     }
                 }
-            }
-        
-         if (selectedLink >= 30) {
-            selectedLink = 1;// reset to starting link index
-         } else {
-            selectedLink = selectedLink + 1;
-         }
-         
-         e.preventDefault();
-      }
-    });
+            
+             if (selectedLink >= 30) {
+                selectedLink = 1;// reset to starting link index
+             } else {
+                selectedLink = selectedLink + 1;
+             }
+             
+             e.preventDefault();
+          }
+        });
+    }; // init
+    init();
 })();
